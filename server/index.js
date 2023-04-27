@@ -53,12 +53,13 @@ app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
 
 /* MONGOOSE SETUP */
+// mongo_url = mongodb://127.0.0.1:27017/nodejstask
+// jwt_secret_key = secret
 const PORT = process.env.PORT || 6001;
-mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+mongoose.connect(process.env.mongo_url, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
   .then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
